@@ -11,7 +11,7 @@
     --texto-principal: #333333;
     --texto-titulos: #2c3e50;
     --borda: #e0e0e0;
-    --sombra: rgba(0, 0, 0, 0.1);
+    --sombra: rgba(0, 0, 0, 0.1);      
 }
 
 /* Quando o body tiver a classe .dark-mode, as variáveis mudam de valor automaticamente */
