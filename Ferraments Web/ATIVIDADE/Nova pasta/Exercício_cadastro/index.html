@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e2f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 20px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+#Formulario{
+    background-color: #9595a5;
+    width: 25rem;
+    min-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 30px;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+input{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 8px;
+    width: 20rem;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button{
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background-color: #696969;
+    transform: scale(1.20); 
+}
+
+.erro {
+    background-color: red;
+    border-radius: 5px;
+    padding: 15px;
+    color: white;
+    font-size: 14px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.sucesso {
+    background-color: green;
+    border-radius: 5px;
+    padding: 15px;
+    color: white;
+    font-size: 14px;
+}
+
+#msg_cadastrado{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#lista_style{
+    background-color: #9595a5;
+    text-align: center;
+    min-width: 20rem;
+    max-width: 25rem;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    min-height: 25rem;
+    max-height: 25rem;
+}
+
+#lista{
+    display: flex;
+    flex-direction: column;
+}
+
+ul{
+    list-style: none;
+}
+
+
+
+</style>
+<body>
+
+    <div class="container">
+        <form id="Formulario">
+
+            <h1>Cadastro</h1>
+
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite seu nome" minlength="4" required>
+            </div>
+            
+            <div class="campo">
+                <label for="idade">Idade</label>
+                <input type="number" name="number" id="idade" placeholder="Digite sua idade" min="0" max="120" required>
+            </div>
+
+            <div class="campo">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="exemplo@gmail.com" minlength="10" required>
+            </div>
+
+            <div class="botoes">
+                <button type="button" onclick="cadastro()">Cadastrar</button>
+                <button type="button" onclick="lista_usuarios()">Listar Usuários</button>
+            </div>
+            <div id="msg_cadastrado"></div>
+        </form>
+    </div>
+    
+    <div id="lista_style">
+        <h1>Lista de Usuários</h1>
+            <ul id="lista"></ul>
+    </div>
+    
+    <script>
+        let usuarios = [];
+
+        function cadastro(){
+
+            const nome = document.querySelector("#nome").value;
+            const idade = document.querySelector("#idade").value;
+            const email = document.querySelector("#email").value;
+            const msg_cadastrado = document.querySelector("#msg_cadastrado");
+            const lista = document.querySelector("#lista");
+
+            msg_cadastrado.innerHTML = "";
+
+            //validação, caso o required não funcione ou usuário tire o required pelo inspecionar
+            if(nome.length < 4){
+                msg_cadastrado.innerHTML = "<span class='erro'>Nome deve conter pelo menos 4 caracteres</span>";
+                setTimeout(() => {
+                    msg_cadastrado.innerHTML = "";
+                }, 3000);
+                return;
+            }
+
+            if(idade < 0 || idade > 120 || idade == ""){
+                msg_cadastrado.innerHTML = "<span class='erro'>Idade Invalida</span>";
+                setTimeout(() => {
+                    msg_cadastrado.innerHTML = "";
+                }, 3000);
+                return;
+            }
+
+            if(email == ""){
+                msg_cadastrado.innerHTML = "<span class='erro'>Email Inválido</span>"
+                setTimeout(() => {
+                    msg_cadastrado.innerHTML = "";
+                }, 3000);
+                return;
+            }
+
+            usuarios.push({
+                nome: nome, 
+                idade: idade,
+                email: email
+            })
+
+            msg_cadastrado.innerHTML = "<span class='sucesso'>Cadastro realizado com sucesso!</span>";
+
+            setTimeout(() => {
+                msg_cadastrado.innerHTML = "";
+            }, 3000);
+
+            
+            document.querySelector("#nome").value = "";
+            document.querySelector("#idade").value = "";
+            document.querySelector("#email").value = "";
+
+        }
+
+        function lista_usuarios(){
+            const lista = document.querySelector("#lista");
+            lista.innerHTML = "";
+        
+            if(usuarios.length === 0){
+                lista.innerHTML = "<span class='erro'>Nenhum usuário cadastrado</span>";
+
+                setTimeout(() => {
+                    lista.innerHTML = "";
+                }, 3000);
+
+                return;
+            }
+
+            usuarios.forEach((u, index) => {
+                const item = document.createElement("li");
+                item.textContent = (index + 1) + " - " + u.nome + " - " + u.idade + " anos - " + u.email;
+                lista.appendChild(item);
+            });
+        }
+
+    </script>
+</body>
+</html>

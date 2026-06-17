@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuários</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 320px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+        }
+
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .erro {
+            color: red;
+            font-size: 14px;
+        }
+
+        .sucesso {
+            color: green;
+            font-size: 14px;
+        }
+
+        ul {
+            margin-top: 15px;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Cadastro</h1>
+
+    <input type="text" id="nome" placeholder="Digite seu nome">
+    <input type="number" id="idade" placeholder="Digite sua idade">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="listar()">Listar Usuários</button>
+
+    <div id="mensagem"></div>
+    <ul id="lista"></ul>
+</div>
+
+<script>
+    // ARRAY (equivalente ao vetor em C)
+    let usuarios = [];
+
+    function cadastrar() {
+        const nome = document.getElementById("nome").value;
+        const idade = document.getElementById("idade").value;
+        const msg = document.getElementById("mensagem");
+
+        msg.innerHTML = "";
+
+        // Validações (UX: prevenção de erro)
+        if (nome.length < 3) {
+            msg.innerHTML = "<span class='erro'>Nome deve ter pelo menos 3 caracteres</span>";
+            return;
+        }
+
+        if (idade < 0 || idade > 120 || idade === "") {
+            msg.innerHTML = "<span class='erro'>Idade inválida</span>";
+            return;
+        }
+
+        // Adiciona no array
+        usuarios.push({
+            nome: nome,
+            idade: idade
+        });
+
+        msg.innerHTML = "<span class='sucesso'>Cadastro realizado com sucesso!</span>";
+
+        // Limpa campos
+        document.getElementById("nome").value = "";
+        document.getElementById("idade").value = "";
+    }
+
+    function listar() {
+        const lista = document.getElementById("lista");
+        lista.innerHTML = "";
+
+        if (usuarios.length === 0) {
+            lista.innerHTML = "<li>Nenhum usuário cadastrado</li>";
+            return;
+        }
+
+        usuarios.forEach((u, index) => {
+            const item = document.createElement("li");
+            item.textContent = (index + 1) + ") " + u.nome + " - " + u.idade + " anos";
+            lista.appendChild(item);
+        });
+    }
+</script>
+
+</body>
+</html>

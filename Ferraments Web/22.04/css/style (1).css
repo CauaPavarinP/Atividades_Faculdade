@@ -1,0 +1,72 @@
+/* style.css */
+
+/* 2.1 - RESET: Tirando os padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial para controle de tamanho */
+}
+
+/* 2.2 - Globais: Fonte e Cor de Fundo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Uma fonte mais moderna */
+    background-color: #eee7e7; /* Fundo cinza claro */
+    color: #000000; /* Texto cinza escuro, melhor leitura */
+}
+main{
+    /*centraliza*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    padding: 20px;
+}
+/*4.1 - O Card: fundo, borda, espaçamento*/
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;/*bordas arredondadas (UX:amigavel)*/
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgb(240, 11, 11);/*sombra mais forte*/
+    transition: transfore 0.3s ease;/*UX: feedback tatil*/
+
+}
+.product-card :hover{
+    transform: translateY(-5px);
+
+}
+/*4.2 elemntos internos*/
+.product-card img{
+    max-width: 100%;/*GARANTE QUE A IMAGEM NAO VAZE*/
+    border-radius: 55px;
+    margin-bottom: 40px;/*ESPAÇO ABAIXO DA IMAGEM*/
+}
+/*4.2 elemntos internos*/
+.product-card h2{
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #a82525;
+}
+/* preço destacado*/
+.product-card .price{
+    display: block;/*OCUPA A LINHA TODA*/
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0011ff;/*VERMELHO PARA DESTAQUE*/
+    margin-bottom: 15px;
+}
+/*4.4- botao: O GRANDE VILAO DO HTML*/
+.product-card button{
+    background-color: #3496db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;/*UX mostra que é clicavel*/
+    transition: background-color 0.3s ease;/*feedback tatil*/
+}
+.product-card button:hover{
+    background-color: #000000;
+}

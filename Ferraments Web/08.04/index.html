@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body contenteditable="false">
+   
+    <header>
+        <h1>Engenharia de Produto: O Ciclo do MVP</h1>
+    
+        <nav>
+            <ul>
+                <li><a href="#conceitos">Conceitos</a></li>
+                <li><a href="#cadastro">cadastro</a></li>
+                <li><a href="#midia">midia</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="conceitos">
+            <h2>1. Fundamentos de Design</h2>
+            <article>
+                <p>No desenvolvimento, o <mark>MVP</mark> permite validar hipóteses com o mínimo de esforco .</p>
+                <figure>
+                    <!--
+                        FIGURE - imagem com legenda em uma unica unidade semantica
+                        figcaption - legenda da imagem
+                    -->
+                    <picture>
+                        <source srcset="./assets/mvp.png" media="(min-width: 800px)">
+                        <img src="assets/mvp.png" alt="Diagrama mostrando o fluxo de um MVP" width="200">
+                    </picture>
+                    <figcaption>Figura 1: 0 ciclo de aprendizado do usuário .</figcaption>
+                </figure>
+            </article>
+            <div>
+                <h3>Glossário Rápido</h3>
+                <span><strong>Affordance: </strong></span>
+                <span>Pistas visuais que indicam como interagir com o objeto .</span>
+                <br>
+                <span><strong>Fricção: </strong></span>
+                <span>Obstáculos que impedem a fluidez da tarefa .</span>
+            </div>
+        </section>
+
+        <section id="cadastro">
+            <h2>2. Formulário Inteligente</h2>
+            <form autocomplete="on">
+                <label for="email">E-mail Corporativo :</label>
+                <input type="email" id="email" name="email" placeholder="exemplo@empresa.com" required>
+                <br>
+                <label for="prioridade">Nível de Prioridade (mín. 1) :</label>
+                <input type="number" id="prioridade" name="prioridade" min="1">
+                <br>
+                <label for="ferramenta">Ferramenta de Benchmark :</label>
+                <input list="ferramentas" id="ferramenta" name="ferramenta">
+                <datalist id="ferramentas">
+                    <option value="Figma">
+                    <option value="Hotjar">
+                    <option value="Google Analytics">
+                </datalist>
+                <br><br>
+                <progress value="50" max="100">50%</progress>
+                <br>
+                <button type="submit">Enviar Dados</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
+
+    

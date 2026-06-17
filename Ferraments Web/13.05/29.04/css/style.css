@@ -1,0 +1,211 @@
+/* style.css */
+
+
+/* 2.1 - RESET: Tirando os padrões do navegador */
+/* limpa o padrão do navegador*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial para controle de tamanho */
+}
+
+/* 2.2 - Globais: Fontes e cor de fundo */
+body{
+    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Uma fonte mais moderna */
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(233, 232, 232);
+    height: 5rem;
+    align-items: center;
+}
+
+main{
+    /*centraliza*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    padding: 20px;
+}
+
+/* 3.3 - Navbar: Barra de Navegação */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #979797;
+}
+
+/* 3.4 - Logo da Loja */
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* 3.5 - Lista de Links */
+.navbar .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Efeito de destaque ao passar o mouse */
+.navbar .nav-links a:hover {
+color: #3498db;
+}
+
+/* 3.6 - Ícone do Carrinho */
+.navbar .cart-icon {
+background-color: #3498db;
+color: #fff;
+padding: 8px 16px;
+border-radius: 5px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+.navbar .cart-icon:hover {
+background-color: #2980b9;
+}
+
+/*4.1 - O Card: fundo, borda, espaçamento*/
+.product-card{
+    background-color: #fff;
+    border-radius: 10px; /* bordas arredondadas (UX: amigavel) */
+    padding: 20px;
+    width: 250px; /* Largura fixa para demonstração */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Sombra mais forte */
+    transition: transform 0.3s ease; /* UX: feedback tátil */
+}
+
+/* UX: Feedback tátil ao passar o mouse */
+.product-card:hover {
+    transform: translateY(-5px); /* Sobe um pouquinho */
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 5);
+}
+
+.product-card img{
+    width: 100%;/* Garante que a imagem não vaze */
+    border-radius: 5px;
+    margin-bottom: 15px;/* Espaço abaixo da imagem */
+}
+
+/*4.2 - elementos inteirnos */
+.product-card h2{
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+/* preço destacado*/
+.product-card .price{
+    display: block;/* ocupa a linha toda */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c1c; /* Vermelho para destaque */
+    margin-bottom: 15px;
+}
+
+/*4.4- botao: O GRANDE VILAO DO HTML*/
+.product-card button{
+    background-color: rgb(82, 79, 131);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;/* UX: Mostra que é clicavel */
+    transition: background-color 0.3s ease; /* Feedback tatil */
+}
+
+.product-card button:hover{
+    background-color: #000000;
+}
+
+/* 5.1 - Vitrine: O poder do css Grid */
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,  minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/*Utilizaremos Flexbox no container pai para criar a divisão lateral.*/
+.content-wrapper{
+    display: flex;
+    align-items: flex-start; /*Garante que tudo comece do topo*/
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;/*um pouco mais de respiro superior*/
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.sidebar{
+    /*flex: 1; /*Ocupa menos espaço*/
+    flex: 0 0 250px; /*Não cresce, não encolhe,mantém 250px fixos*/
+    min-width: 200px;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    height: fit-content;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0, 0.05); /*Sombra leve para combinar*/
+}
+
+.sidebar ul{
+    list-style: none;
+    margin: 15px 0;
+}
+
+.sidebar li{
+    margin-bottom: 10px;/*Espaçamento entre os itens do filtro*/
+}
+
+
+.slider{
+    display: flex;
+    width: 200%; /*Para duas imagens*/
+    animation: slide-animation 10s infinite;
+}
+
+.slide{ width: 50%;}
+
+.slide img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+@keyframes slide-animation{
+    0% {margin-left: 0;}
+    45% {margin-left: 0;}
+    50% {margin-left: -100%;}
+    95% {margin-left: -100%;}
+    100% {margin-left: 0;}
+}
+
+.banner-text{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0, 7);
+}
